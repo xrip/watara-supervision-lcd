@@ -70,8 +70,8 @@ The LCD grabber intercepts the digital signals from the Watara Supervision's vid
 
 1. Clone this repository:
    ```
-   git clone https://github.com/your-username/watara-supervision-lcd-grabber.git
-   cd watara-supervision-lcd-grabber
+   git clone https://github.com/xrip/watara-supervision-lcd
+   cd watara-supervision-lcd
    ```
 
 2. Set up the Raspberry Pi Pico SDK according to the [official documentation](https://github.com/raspberrypi/pico-sdk).
