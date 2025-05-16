@@ -75,7 +75,7 @@ void __time_critical_func(render_core)() {
     uint8_t last_clock_state = 0;
     uint8_t last_polarity_state = 0;
 
-    uint8_t *scanline = FRAME_BUFFER;
+    uint8_t *pixels = FRAME_BUFFER;
 
 
     while (!gpio_get(FRAME_POLARITY_PIN)); // Wait for a new frame
@@ -88,20 +88,20 @@ void __time_critical_func(render_core)() {
 
         if (clock && !last_clock_state) {
             if (polarity) {
-                *scanline++ = (bus >> DATA0_PIN & 1) << 1;
-                *scanline++ = (bus >> DATA1_PIN & 1) << 1;
-                *scanline++ = (bus >> DATA2_PIN & 1) << 1;
-                *scanline++ = (bus >> DATA3_PIN & 1) << 1;
+                *pixels++ = (bus >> DATA0_PIN & 1) << 1;
+                *pixels++ = (bus >> DATA1_PIN & 1) << 1;
+                *pixels++ = (bus >> DATA2_PIN & 1) << 1;
+                *pixels++ = (bus >> DATA3_PIN & 1) << 1;
             } else {
-                *scanline++ |= bus >> DATA0_PIN & 1;
-                *scanline++ |= bus >> DATA1_PIN & 1;
-                *scanline++ |= bus >> DATA2_PIN & 1;
-                *scanline++ |= bus >> DATA3_PIN & 1;
+                *pixels++ |= bus >> DATA0_PIN & 1;
+                *pixels++ |= bus >> DATA1_PIN & 1;
+                *pixels++ |= bus >> DATA2_PIN & 1;
+                *pixels++ |= bus >> DATA3_PIN & 1;
             }
         }
 
         if (polarity != last_polarity_state && time_us_32() - time > 9000) {
-            scanline = FRAME_BUFFER;
+            pixels = FRAME_BUFFER;
             time = time_us_32();
 #ifdef DEBUG
                 if (polarity)
