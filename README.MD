@@ -30,6 +30,42 @@ The LCD grabber intercepts the digital signals from the Watara Supervision's vid
 | 20        | PIXEL_CLOCK_PIN    | Clock signal for pixel data     |
 | 21        | FRAME_POLARITY_PIN | Frame sync/polarity indicator   |
 
+### Supervision LCD connector pinout
+
+```
+    1  2  3  4  5  6  7  8  9  10 11 12
+    |  |  |  |  |  |  |  |  |  |  |  |
+.---|--|--|--|--|--|--|--|--|--|--|--|---.
+|   |  |  |  |  |  |  |  |  |  |  |  |   |
+|   o  o  o  o  o  o  o  o  o  x  o  x   |
+|            <LCD connector>             |
+|                                        |
+|              | | | | | |               |
+|            -             -             |
+|            -    C P U    -             |
+|            -  (top side) -             |
+|            -             -             |
+|              | | | | | |               |
+|                                        |
+|      <controller board connection>     |
+`----------------------------------------`
+```
+
+**Supervision LCD pins:**
+
+1. Ground
+2. Data 0
+3. Data 1
+4. Data 2
+5. Data 3
+6. Pixel clock
+7. Line latch
+8. Frame latch
+9. Frame polarity
+10. Unused (power control)
+11. +6V
+12. Unused (no idea what it does)
+
 ## Installation
 
 1. Clone this repository:
@@ -91,6 +127,6 @@ Contributions to improve the project are welcome! Please feel free to submit iss
 
 ## Acknowledgments
 
-- Thanks to the Raspberry Pi Pico community
+- Project based on https://github.com/DutchMaker/Supervision-LCD 
 - Watara Supervision hardware documentation resources
 - [Any other acknowledgments]
