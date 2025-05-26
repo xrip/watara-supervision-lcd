@@ -2,6 +2,8 @@
 
 A Raspberry Pi Pico-based solution for capturing and converting the LCD output from Watara Supervision handheld consoles.
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fknIlfdXnEg/0.jpg)](https://www.youtube.com/watch?v=fknIlfdXnEg)
+
 ## Overview
 
 This project allows you to:
