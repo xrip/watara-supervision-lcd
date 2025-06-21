@@ -28,8 +28,17 @@ void __time_critical_func(render_core)() {
     graphics_set_flashmode(true, true);
 
     graphics_set_mode(GRAPHICSMODE_DEFAULT);
-
-    while (1) {
+    // Timing variables
+    uint64_t tick = time_us_64();
+    uint64_t last_frame_tick = tick;
+    while (true) {
+        // Video frame rendering (~60Hz)
+        if (tick >= last_frame_tick + 16667) {
+#if defined(TFT)
+            refresh_lcd();
+#endif
+            last_frame_tick = tick;
+        }
         tight_loop_contents();
     }
 }
