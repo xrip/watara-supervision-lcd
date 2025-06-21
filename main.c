@@ -39,6 +39,8 @@ void __time_critical_func(render_core)() {
 #endif
             last_frame_tick = tick;
         }
+
+        tick = time_us_64();
         tight_loop_contents();
     }
 }
